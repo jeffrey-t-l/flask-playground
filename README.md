@@ -1,5 +1,13 @@
 
-# A playground web app built with Flask and Pico CSS.
+# Flask Playground
+
+## A sample web app built with Flask and Pico CSS.
+
+
+Clone by running
+```
+gh repo clone jeffrey-t-l/flask-playground
+```
 
 ### How to (actually) run this application:
 
