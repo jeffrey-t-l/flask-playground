@@ -22,13 +22,16 @@ def home():
     return render_template("index.html", title="FatFish")
 
 # create new user page
-@app.route("/create", methods=["GET", "POST"])
-def create():
+@app.route("/create_account", methods=["GET", "POST"])
+def create_account():
     if request.method == "POST":
-        # print(type(request.form["firstname"]))
-        select_users()
-        insert_user("jeff", "jeff@test.com", "j_pw")
-    return render_template("create.html", title="Create")
+        # print(request.form["username"])
+        try:
+            insert_user(request.form["username"], request.form["email"], request.form["password"])
+            print("Success")
+        except:
+            print("Error Submitting Data")
+    return render_template("create_account.html", title="Create Account")
 
 # route to data page showing users
 @app.route("/data")
@@ -36,10 +39,17 @@ def data():
     details = select_users()
     return render_template("data.html", title="View Data", users = details)
 
+#Sign In
+@app.route("/sign_in")
+def sign_in():
+    return render_template("sign_in.html", title="Sign In")
+
 #to be deleted one day
 @app.route("/playground")
 def playground():
     return render_template("playground.html", title="FatFish | Playground")
+
+
 
 # get all users from mysql
 def select_users():
