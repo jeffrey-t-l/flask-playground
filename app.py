@@ -21,16 +21,7 @@ conn = pymysql.connect(
 def home():
     return render_template("index.html", title="FatFish")
 
-# @app.route("/if_statement")
-# def if_statement():
-#     if True == True:
-#         data = "this is all the data"
-#     return data
-
-@app.route("/playground")
-def playground():
-    return render_template("playground.html", title="FatFish | Playground")
-
+# create new user page
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if request.method == "POST":
@@ -39,23 +30,26 @@ def create():
         insert_user("jeff", "jeff@test.com", "j_pw")
     return render_template("create.html", title="Create")
 
+# route to data page showing users
 @app.route("/data")
 def data():
     details = select_users()
-    # print(str(users))
-    # for user in users:
-    #     print(str(user))
     return render_template("data.html", title="View Data", users = details)
 
+#to be deleted one day
+@app.route("/playground")
+def playground():
+    return render_template("playground.html", title="FatFish | Playground")
+
+# get all users from mysql
 def select_users():
     cur=conn.cursor()
     cur.execute("SELECT * FROM user")
     details = cur.fetchall()
-    # print(str(details))
     return details
 
+# insert new user into mysql
 def insert_user(name,email,password):
     cur=conn.cursor()
     cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,password))
-    # INSERT INTO user (username,email,password,create_time) VALUES ("test_username", "test@email.com", "test_pw")
     conn.commit()
