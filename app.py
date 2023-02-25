@@ -35,7 +35,7 @@ def playground():
 def create():
     if request.method == "POST":
         # print(type(request.form["firstname"]))
-        select_user()
+        select_users()
         insert_user("jeff", "jeff@test.com", "j_pw")
     return render_template("create.html", title="Create")
 
