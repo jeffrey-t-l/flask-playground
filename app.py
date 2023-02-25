@@ -22,6 +22,7 @@ def home():
     return render_template("index.html", title="FatFish")
 
 # create new user page
+@app.route("/create_user", methods=["GET", "POST"])
 @app.route("/create_account", methods=["GET", "POST"])
 def create_account():
     if request.method == "POST":
@@ -29,8 +30,8 @@ def create_account():
         try:
             insert_user(request.form["username"], request.form["email"], request.form["password"])
             print("Success")
-        except:
-            print("Error Submitting Data")
+        except ValueError:
+            print(ValueError)
     return render_template("create_account.html", title="Create Account")
 
 # route to data page showing users
