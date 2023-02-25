@@ -37,11 +37,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% set count = 0 %}
                     {% for user in users %}
-                    {% set count = count + 1 %}
                     <tr>
-                        <td>{{ count }}</td>
+                        <td>{{ loop.index }}</td>
                         <td>{{ user[0] }}</td>
                         <td>{{ user[1] }}</td>
                         <td>{{ user[2] }}</td>
@@ -50,57 +48,18 @@
                     {% endfor %}
 
                 </tbody>
+                <tfoot>
+                    <tr>
+                    <!--
+                        <th scope="col">#</th>
+                        <td scope="col">Total</td>
+                        <td scope="col">Total</td>
+                        <td scope="col">Total</td>
+                        <td scope="col">Total</td>
+                    -->
+                    </tr>
+                </tfoot>
             </table>
         </section>
-
-        <!-- <table role="grid">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Heading</th>
-                    <th scope="col">Heading</th>
-                    <th scope="col">Heading</th>
-                    <th scope="col">Heading</th>
-                    <th scope="col">Heading</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th scope="col">#</th>
-                    <td scope="col">Total</td>
-                    <td scope="col">Total</td>
-                    <td scope="col">Total</td>
-                    <td scope="col">Total</td>
-                    <td scope="col">Total</td>
-                </tr>
-            </tfoot>
-        </table> -->
-
 
 </html>
