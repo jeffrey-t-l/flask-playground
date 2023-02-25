@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pico.min.css') }}">
+    <title>{{ title }}</title>
+</head>
+<article>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><strong>FatFish</strong></li>
+                </ul>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/playground">Playground</a></li>
+                    <li><a href="/data">Data</a></li>
+                    <!-- <li><a href="#" role="button">Sign In</a></li> -->
+                    <li><a href="#" role="button" class="secondary">Sign In</a></li>
+                    <li><a href="#" role="button" class="contrast">Sign Up</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <table role="grid">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Heading</th>
+                    <th scope="col">Heading</th>
+                    <th scope="col">Heading</th>
+                    <th scope="col">Heading</th>
+                    <th scope="col">Heading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="col">#</th>
+                    <td scope="col">Total</td>
+                    <td scope="col">Total</td>
+                    <td scope="col">Total</td>
+                    <td scope="col">Total</td>
+                    <td scope="col">Total</td>
+                </tr>
+            </tfoot>
+        </table>
+
+
+</html>
