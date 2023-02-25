@@ -21,8 +21,12 @@ def playground():
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if request.method == "POST":
-        print(request.form["firstname"])
-        print(request.form["lastname"])
+        # print(type(request.form["firstname"]))
+        # print(type(request.form["lastname"]))
+        # print(type(request.form["email"]))
+        # print(type(request.form["itemlist"]))
+        # print(request.form.get("itemlist"))
+        print(str(request.form))
     return render_template("create.html", title="Create")
 
 @app.route("/data")
