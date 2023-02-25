@@ -1,8 +1,21 @@
 from flask import Flask, render_template, request
-
+from dotenv import load_dotenv
+import os
+import pymysql
 
 app = Flask(__name__)
 
+# create connection to mysql
+load_dotenv()
+conn = pymysql.connect(
+    host="database-2.ceckcclbqkdy.us-east-1.rds.amazonaws.com",
+    port=3306,
+    user="admin",
+    password=os.getenv("db_pw"),
+    db='database_2'
+)
+
+# HOME
 @app.route("/")
 @app.route("/home")
 def home():
@@ -22,13 +35,23 @@ def playground():
 def create():
     if request.method == "POST":
         # print(type(request.form["firstname"]))
-        # print(type(request.form["lastname"]))
-        # print(type(request.form["email"]))
-        # print(type(request.form["itemlist"]))
-        # print(request.form.get("itemlist"))
-        print(str(request.form))
+        select_user()
+        insert_user("jeff", "jeff@test.com", "j_pw")
     return render_template("create.html", title="Create")
 
 @app.route("/data")
 def data():
     return render_template("data.html", title="View Data")
+
+def select_user():
+    cur=conn.cursor()
+    cur.execute("SELECT * FROM user")
+    details = cur.fetchall()
+    print(str(details))
+    return details
+
+def insert_user(name,email,password):
+    cur=conn.cursor()
+    cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,password))
+    # INSERT INTO user (username,email,password,create_time) VALUES ("test_username", "test@email.com", "test_pw")
+    conn.commit()
