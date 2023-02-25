@@ -25,8 +25,35 @@
                 </ul>
             </nav>
         </header>
+        <section>
+            <table role="grid">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Created Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set count = 0 %}
+                    {% for user in users %}
+                    {% set count = count + 1 %}
+                    <tr>
+                        <td>{{ count }}</td>
+                        <td>{{ user[0] }}</td>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                        <td>{{ user[3] }}</td>
+                    </tr>
+                    {% endfor %}
 
-        <table role="grid">
+                </tbody>
+            </table>
+        </section>
+
+        <!-- <table role="grid">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -73,7 +100,7 @@
                     <td scope="col">Total</td>
                 </tr>
             </tfoot>
-        </table>
+        </table> -->
 
 
 </html>

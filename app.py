@@ -41,13 +41,17 @@ def create():
 
 @app.route("/data")
 def data():
-    return render_template("data.html", title="View Data")
+    details = select_users()
+    # print(str(users))
+    # for user in users:
+    #     print(str(user))
+    return render_template("data.html", title="View Data", users = details)
 
-def select_user():
+def select_users():
     cur=conn.cursor()
     cur.execute("SELECT * FROM user")
     details = cur.fetchall()
-    print(str(details))
+    # print(str(details))
     return details
 
 def insert_user(name,email,password):
