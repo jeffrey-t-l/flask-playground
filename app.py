@@ -10,7 +10,7 @@ load_dotenv()
 conn = pymysql.connect(
     host="database-2.ceckcclbqkdy.us-east-1.rds.amazonaws.com",
     port=3306,
-    user="admin",
+    user=os.getenv("db_user"),
     password=os.getenv("db_pw"),
     db='database_2'
 )
@@ -19,7 +19,7 @@ conn = pymysql.connect(
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("index.html", title="FatFish")
+    return render_template("index.html", title="Welcome Home")
 
 # create new user page
 @app.route("/create_user", methods=["GET", "POST"])
@@ -30,8 +30,8 @@ def create_account():
         try:
             insert_user(request.form["username"], request.form["email"], request.form["password"])
             print("Success")
-        except ValueError:
-            print(ValueError)
+        except:
+            print("ERROR")
     return render_template("create_account.html", title="Create Account")
 
 # route to data page showing users
@@ -45,17 +45,25 @@ def data():
 def sign_in():
     return render_template("sign_in.html", title="Sign In")
 
+#landing
+@app.route("/landing")
+def landing():
+    return render_template("landing.html", title="Landing")
+
 #to be deleted one day
 @app.route("/playground")
 def playground():
-    return render_template("playground.html", title="FatFish | Playground")
+    return render_template("playground.html", title="Playground")
 
 
+
+
+# AWS DATABASE FUNCTIONS BELOW
 
 # get all users from mysql
 def select_users():
     cur=conn.cursor()
-    cur.execute("SELECT * FROM user")
+    cur.execute("SELECT username,email,password,create_time FROM user")
     details = cur.fetchall()
     return details
 

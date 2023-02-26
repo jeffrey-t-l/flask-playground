@@ -1,9 +1,35 @@
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+<!doctype html>
+<html lang="en">
 
-<body>
-    <div class="App">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pico.min.css') }}">
+    <title>{{ title }}</title>
+</head>
+<article>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><strong>FatFish</strong></li>
+                </ul>
+                <ul>
+                    <!--
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/playground">Playground</a></li>
+                -->
+                    <li><a href="/data">Data</a></li>
+                    <li><a href="/create_account">Create Account</a></li>
+                    <!-- <li><a href="#" role="button">Sign In</a></li> -->
+                    <li><a href="/sign_in" role="button" class="secondary">Sign In</a></li>
+                    <li><a href="#" role="button" class="contrast">Sign Up</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="App">
+            <!--
         <header class="App-header">
             <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
             <p>
@@ -12,7 +38,42 @@
             <p class="small">
                 Edit <code>templates/index.html</code> and refresh to see your changes!
             </p>
-        </header>
-    </div>
-</body>
+        </header> -->
 
+
+            <!-- Modal -->
+            <main class="container">
+                <dialog id="modal-example">
+                    <article>
+                        <a href="#close" aria-label="Close" class="close" data-target="modal-example"
+                            onClick="toggleModal(event)">
+                        </a>
+                        <h3>Confirm your action!</h3>
+                        <p>
+                            Cras sit amet maximus risus.
+                            Pellentesque sodales odio sit amet augue finibus pellentesque.
+                            Nullam finibus risus non semper euismod.
+                        </p>
+                        <footer>
+                            <a href="#cancel" role="button" class="secondary" data-target="modal-example"
+                                onClick="toggleModal(event)">
+                                Cancel
+                            </a>
+                            <a href="#confirm" role="button" data-target="modal-example" onClick="toggleModal(event)">
+                                Confirm
+                            </a>
+                        </footer>
+                    </article>
+                </dialog>
+            </main>
+
+            <!-- Button to trigger the modal -->
+            <button class="contrast" data-target="modal-example" onClick="toggleModal(event)">
+                Launch demo modal
+            </button>
+            </section>
+        </div>
+    </body>
+</article>
+
+</html>
