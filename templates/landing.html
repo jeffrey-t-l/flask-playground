@@ -16,20 +16,30 @@
                 <ul>
                     <li><strong>A Landing Page.</strong></li>
                 </ul>
-                <!-- <ul>
-                    <li><a href="/data">Data</a></li>
-                    <li><a href="/create_account">Create Account</a></li>
-                    <li><a href="/sign_in" role="button" class="secondary">Sign In</a></li>
-                    <li><a href="#" role="button" class="contrast">Sign Up</a></li>
-                </ul> -->
             </nav>
         </header>
+
         <div class="App">
-            <img src="{{ url_for('static', filename='undraw_energizer_re_vhjv.svg') }}" class="App-logo"
-                alt="An image." />
-        </div>
-        <div>
-            Another Div
+            <main>
+                <!--
+                <img src="{{ url_for('static', filename='undraw_energizer_re_vhjv.svg') }}" class="App-logo"
+                    alt="An image." />
+                <img src="{{ url_for('static', filename='undraw_personal_info_re_ur1n.svg') }}" class="App-logo"
+                    alt="Another image." />
+                <img src="{{ url_for('static', filename='undraw_polaroid_re_481f.svg') }}" class="App-logo"
+                    alt="Yet another image." />
+                -->
+
+                <div class="grid">
+                    <div>
+                        <img src="{{ url_for('static', filename='undraw_fishing_hoxa.svg') }}" class="App-logo"
+                            alt="Yet another image." />
+                    </div>
+                    <div>
+                        Hello!
+                    </div>
+                </div>
+            </main>
         </div>
     </body>
 </article>
