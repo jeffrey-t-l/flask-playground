@@ -26,10 +26,9 @@ def home():
 @app.route("/create_account", methods=["GET", "POST"])
 def create_account():
     if request.method == "POST":
-        # print(request.form["username"])
         try:
             insert_user(request.form["username"], request.form["email"], request.form["password"])
-            print("Success")
+            print("SUCCESS")
         except:
             print("ERROR")
     return render_template("create_account.html", title="Create Account")
