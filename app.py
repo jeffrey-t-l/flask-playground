@@ -33,6 +33,17 @@ def create_account():
             print("ERROR")
     return render_template("create_account.html", title="Create Account")
 
+@app.route("/edit_user", methods=["GET", "POST"])
+@app.route("/edit_account", methods=["GET", "POST"])
+def edit_account():
+    if request.method == "POST":
+        try:
+            insert_user(request.form["username"], request.form["email"], request.form["password"])
+            print("SUCCESS")
+        except:
+            print("ERROR")
+    return render_template("edit_user.html", title="Edit Account")
+
 # route to data page showing users
 @app.route("/data")
 def data():
