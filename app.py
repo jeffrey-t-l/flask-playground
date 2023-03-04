@@ -45,10 +45,10 @@ def edit_account():
     return render_template("edit_user.html", title="Edit Account")
 
 # route to data page showing users
-@app.route("/data")
-def data():
-    details = select_users()
-    return render_template("data.html", title="View Data", users = details)
+# @app.route("/data")
+# def data():
+#     details = select_users()
+#     return render_template("data.html", title="View Data", users = details)
 
 #Sign In
 @app.route("/sign_in")
@@ -64,6 +64,23 @@ def landing():
 @app.route("/playground")
 def playground():
     return render_template("playground.html", title="Playground")
+
+@app.route("/manage_users", methods=["GET", "POST"])
+def manage_users():
+    details = select_users()
+    print(request.form.items)
+    return render_template("manage_users.html", title="Manage Users", users=details)
+
+@app.route("/manage_user", methods=["GET", "POST"])
+def manage_user():
+    if request.method == "POST":
+        try:
+            # insert_user(request.form["username"], request.form["email"], request.form["password"])
+            # print("SUCCESS AT MANAGER_USER()")
+            print(request.form.items)
+        except:
+            print("ERROR")
+    return render_template("manage_user.html", title="Manage User", users=None)
 
 
 
