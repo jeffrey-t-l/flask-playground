@@ -23,32 +23,14 @@ def home():
 
 # create new user page
 @app.route("/create_user", methods=["GET", "POST"])
-@app.route("/create_account", methods=["GET", "POST"])
-def create_account():
+def create_user():
     if request.method == "POST":
         try:
             insert_user(request.form["username"], request.form["email"], request.form["password"])
             print("SUCCESS")
         except:
             print("ERROR")
-    return render_template("create_account.html", title="Create Account")
-
-@app.route("/edit_user", methods=["GET", "POST"])
-@app.route("/edit_account", methods=["GET", "POST"])
-def edit_account():
-    if request.method == "POST":
-        try:
-            insert_user(request.form["username"], request.form["email"], request.form["password"])
-            print("SUCCESS")
-        except:
-            print("ERROR")
-    return render_template("edit_user.html", title="Edit Account")
-
-# route to data page showing users
-# @app.route("/data")
-# def data():
-#     details = select_users()
-#     return render_template("data.html", title="View Data", users = details)
+    return render_template("create_user.html", title="Create User")
 
 #Sign In
 @app.route("/sign_in")
@@ -59,11 +41,6 @@ def sign_in():
 @app.route("/landing")
 def landing():
     return render_template("landing.html", title="Landing")
-
-#to be deleted one day
-@app.route("/playground")
-def playground():
-    return render_template("playground.html", title="Playground")
 
 @app.route("/manage_users", methods=["GET", "POST"])
 def manage_users():
@@ -103,3 +80,35 @@ def insert_user(name,email,password):
     cur=conn.cursor()
     cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,password))
     conn.commit()
+
+
+
+
+
+# Parking Lot
+# @app.route("/create_account", methods=["GET", "POST"])
+# def create_account():
+#     if request.method == "POST":
+#         try:
+#             insert_user(request.form["username"], request.form["email"], request.form["password"])
+#             print("SUCCESS")
+#         except:
+#             print("ERROR")
+#     return render_template("create_account.html", title="Create Account")
+
+# @app.route("/edit_user", methods=["GET", "POST"])
+# @app.route("/edit_account", methods=["GET", "POST"])
+# def edit_account():
+#     if request.method == "POST":
+#         try:
+#             insert_user(request.form["username"], request.form["email"], request.form["password"])
+#             print("SUCCESS")
+#         except:
+#             print("ERROR")
+#     return render_template("edit_user.html", title="Edit Account")
+
+# route to data page showing users
+# @app.route("/data")
+# def data():
+#     details = select_users()
+#     return render_template("data.html", title="View Data", users = details)
