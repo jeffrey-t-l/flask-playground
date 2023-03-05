@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block form %}
+
+
+<main class="container" id="settings">
+<article>
+
+    <body>
+        <!-- <header class="App-header">
+            <nav>
+                <ul>
+                    <li><strong>Change My Settings</strong></li>
+                </ul>
+            </nav>
+        </header> -->
+
+        <!--
+
+
+            Abandoning this for now
+        -->
+
+
+
+
+
+        <header>
+            <hgroup>
+              <h1>Class-less example</h1>
+              <h2>Just a pure semantic HTML markup, without <code>.classes</code></h2>
+            </hgroup>
+            <nav>
+              <ul>
+                <li>
+                  <details role="list">
+                    <summary aria-haspopup="listbox" role="button">Theme</summary>
+                    <ul role="listbox">
+                      <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                      <li><a href="#" data-theme-switcher="light">Light</a></li>
+                      <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details role="list">
+                    <summary aria-haspopup="listbox">Examples</summary>
+                    <ul role="listbox">
+                      <li><a href="../preview/">Preview</a></li>
+                      <li><a href="../preview-rtl/">Right-to-left</a></li>
+                      <li><a href="../classless/">Class-less</a></li>
+                      <li><a href="../basic-template/">Basic template</a></li>
+                      <li><a href="../company/">Company</a></li>
+                      <li><a href="../google-amp/">Google Amp</a></li>
+                      <li><a href="../sign-in/">Sign in</a></li>
+                      <li><a href="../bootstrap-grid/">Bootstrap grid</a></li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
+            </nav>
+          </header>
+        <section>
+            <details role="list">
+                <summary aria-haspopup="listbox" role="button">Theme</summary>
+                <ul role="listbox">
+                  <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                  <li><a href="#" data-theme-switcher="light">Light</a></li>
+                  <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                </ul>
+              </details>
+        </section>
+    </body>
+</article>
+
+</main>
+
+
+{% endblock %}

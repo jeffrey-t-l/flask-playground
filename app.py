@@ -63,6 +63,9 @@ def manage_user():
         print("GET: " + str(request.form.items))
     return render_template("manage_user.html", title="Manage User")
 
+@app.route("/settings")
+def user_settings():
+    return render_template("settings.html", title="Settings")
 
 
 
