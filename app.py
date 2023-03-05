@@ -21,7 +21,7 @@ conn = pymysql.connect(
 def home():
     return render_template("index.html", title="Welcome Home")
 
-# create new user page
+# create new user
 @app.route("/create_user", methods=["GET", "POST"])
 def create_user():
     if request.method == "POST":
