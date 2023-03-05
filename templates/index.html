@@ -1,46 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='pico.min.css') }}">
-    <title>{{ title }}</title>
-</head>
-<article>
-
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><strong>FatFish</strong></li>
-                </ul>
-                <ul>
-                    <!--
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/playground">Playground</a></li>
-                -->
-                    <li><a href="/data">Data</a></li>
-                    <li><a href="/create_account">Create Account</a></li>
-                    <!-- <li><a href="#" role="button">Sign In</a></li> -->
-                    <li><a href="/sign_in" role="button" class="secondary">Sign In</a></li>
-                    <li><a href="#" role="button" class="contrast">Sign Up</a></li>
-                </ul>
-            </nav>
-        </header>
+{% extends "base.html" %}
+{% block form %}
         <div class="App">
-            <!--
-        <header class="App-header">
-            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Flask
-            </p>
-            <p class="small">
-                Edit <code>templates/index.html</code> and refresh to see your changes!
-            </p>
-        </header> -->
-
-
             <!-- Modal -->
             <main class="container">
                 <dialog id="modal-example">
@@ -73,7 +33,4 @@
             </button>
             </section>
         </div>
-    </body>
-</article>
-
-</html>
+{% endblock %}

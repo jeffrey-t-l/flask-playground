@@ -1,12 +1,5 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='pico.min.css') }}">
-    <title>{{ title }}</title>
-</head>
+{% extends "base.html" %}
+{% block form %}
 
 <article>
 
@@ -23,16 +16,22 @@
             <main>
                 <div class="grid">
                     <div>
+                        <p>Hello!</p>
+                        <p>
+                        Cras sit amet maximus risus.
+                        Pellentesque sodales odio sit amet augue finibus pellentesque.
+                        Nullam finibus risus non semper euismod.
+                        </p>
+                    </div>
+                    <div>
                         <img src="{{ url_for('static', filename='undraw_fishing_hoxa.svg') }}" class="App-logo"
                             alt="Yet another image." />
                     </div>
-                    <div>
-                        Hello!
-                    </div>
+
                 </div>
             </main>
         </div>
     </body>
 </article>
 
-</html>
+{% endblock %}
