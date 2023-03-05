@@ -68,19 +68,23 @@ def playground():
 @app.route("/manage_users", methods=["GET", "POST"])
 def manage_users():
     details = select_users()
-    print(request.form.items)
+    # print(request.form.items)
+    if request.method == "POST":
+        print("manage_users_POST: " + str(request.form.items))
+        return render_template("manage_user.html", title="Manage User", username=request.form["username"], email=request.form["email"], pw=request.form["pw"])
+    elif request.method == "GET":
+        print("GET: " + str(request.form.items))
     return render_template("manage_users.html", title="Manage Users", users=details)
 
 @app.route("/manage_user", methods=["GET", "POST"])
 def manage_user():
     if request.method == "POST":
-        try:
-            # insert_user(request.form["username"], request.form["email"], request.form["password"])
-            # print("SUCCESS AT MANAGER_USER()")
-            print(request.form.items)
-        except:
-            print("ERROR")
-    return render_template("manage_user.html", title="Manage User", users=None)
+        # insert_user(request.form["username"], request.form["email"], request.form["password"])
+        # print("SUCCESS AT MANAGER_USER()")
+        print("manage_user_POST: " + str(request.form.items))
+    elif request.method == "GET":
+        print("GET: " + str(request.form.items))
+    return render_template("manage_user.html", title="Manage User")
 
 
 

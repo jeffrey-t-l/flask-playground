@@ -2,40 +2,44 @@
 {% block form %}
 
 <section>
-    <form method="post" id="edit">
-        <table role="grid">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">ID#</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Created Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td><a href="/manage_user"  role="button" type="submit">GoTo</a></td>
-                    <td><input type="text" id="username" name="username" readonly required value="{{ user[0] }}"></td>
-                    <td><input type="text" id="email" name="email" readonly required value="{{ user[1] }}"></td>
-                    <td><input type="password" id="pw" name="pw" readonly required value="{{ user[2] }}"></td>
-                    <td><input type="text" id="email" name="email" readonly required value="{{ user[3] }}"></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th scope="col">#</th>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                </tr>
-            </tfoot>
-        </table>
-    </form>
+    <table role="grid">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">ID#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Created Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <form method="post" id="manageusers">
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><button type="submit">GoTo</button></td>
+                <td><input type="text" id="username" name="username"
+                    readonly required value="{{ user[0] }}"></td>
+                <td><input type="text" id="email" name="email"
+                    readonly required value="{{ user[1] }}"></td>
+                <td><input type="password" id="pw" name="pw"
+                    readonly required value="{{ user[2] }}"></td>
+                <td><input type="text" id="created_date" name="email"
+                    readonly required value="{{ user[3] }}"></td>
+            </tr>
+            </form>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="col">#</th>
+                <td scope="col"></td>
+                <td scope="col"></td>
+                <td scope="col"></td>
+            </tr>
+        </tfoot>
+    </table>
 </section>
 
 {% endblock %}
