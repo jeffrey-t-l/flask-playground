@@ -1,30 +1,43 @@
 {% extends "base.html" %}
-{% block form %}
 
-<main class="container">
-  <section>
-    <hgroup>
-      <h2>Sign In</h2>
-      <h3>Sign into your account</h3>
-      </hgroup>
-    </section>
-    <section>
-      <form method="post" id="signin">
-        <div>
-          <label for="username">
-            Username or Email Address
-            <input type="text" id="username" name="username" placeholder="Username" required>
-          </label>
-          <label for="password">
-            Password
-            <input type="text" id="password" name="password" placeholder="Password" required>
-          </label>
-        </div>
-        <section>
-          <button type="submit">Submit</button>
-        </section>
-      </form>
-    </section>
-    <div><progress></progress></div>
-  </main>
+{% block head %}
+  {{ super() }}
+    <li><a href="/manage_users" role="button">Manage Users</a></li>
+{% endblock %}
+
+{% block form %}
+<article>
+  <body>
+    <header class="App-header">
+      <nav>
+        <ul>
+          <hgroup>
+            <h2>Sign In</h2>
+            <h3>Sign into your account</h3>
+          </hgroup>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <section>
+        <form method="post" id="signin">
+          <div>
+            <label for="username">
+              Username or Email Address
+              <input type="text" id="username" name="username" placeholder="Username" required>
+            </label>
+            <label for="password">
+              Password
+              <input type="text" id="password" name="password" placeholder="Password" required>
+            </label>
+          </div>
+          <section>
+            <button type="submit">Submit</button>
+          </section>
+        </form>
+      </section>
+      <div><progress></progress></div>
+    </main>
+  </body>
+</article>
 {% endblock %}

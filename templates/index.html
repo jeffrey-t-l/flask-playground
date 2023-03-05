@@ -1,6 +1,10 @@
 {% extends "base.html" %}
-{% block form %}
 
+{% block head %}
+  {{ super() }}
+    <!-- <li><a href="/create_user" role="button">Create User</a></li> -->
+{% endblock %}
+{% block form %}
 <article>
 
     <body>
@@ -13,7 +17,7 @@
         </header>
 
         <div class="App">
-            <main>
+            <main class="container">
                 <div class="grid">
                     <div>
                         <p>Hello!</p>
