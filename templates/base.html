@@ -1,29 +1,33 @@
 <!doctype html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='pico.min.css') }}">
     <title>{{ title }}</title>
 </head>
+
+
 <article>
 
     <body>
+
         <header>
             <nav>
+
                 <ul>
-                    <li><strong>BrandName</strong></li>
+                    <li><a href="/" class="secondary"><strong>BrandName</strong></a></li>
                 </ul>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    {% block head %}{% endblock %}
                     <li><a href="/manage_users" role="button">Manage Users</a></li>
-                    <li><a href="/create_user" role="button">Create User</a></li>
-                    <li><a href="/sign_in" role="button" class="secondary">Sign In</a></li>
-                    <!-- <li><a href="#" role="button" class="contrast">Sign Up</a></li> -->
+                    <li><a href="/sign_in" role="button" class="primary">Sign In</a></li>
                 </ul>
             </nav>
         </header>
+
         <div class="App">
             {% block form %} {% endblock %}
         </div>
