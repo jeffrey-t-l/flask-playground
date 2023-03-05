@@ -1,36 +1,37 @@
 {% extends "base.html" %}
 {% block form %}
-        <div class="App">
-            <!-- Modal -->
-            <main class="container">
-                <dialog id="modal-example">
-                    <article>
-                        <a href="#close" aria-label="Close" class="close" data-target="modal-example"
-                            onClick="toggleModal(event)">
-                        </a>
-                        <h3>Confirm your action!</h3>
-                        <p>
-                            Cras sit amet maximus risus.
-                            Pellentesque sodales odio sit amet augue finibus pellentesque.
-                            Nullam finibus risus non semper euismod.
-                        </p>
-                        <footer>
-                            <a href="#cancel" role="button" class="secondary" data-target="modal-example"
-                                onClick="toggleModal(event)">
-                                Cancel
-                            </a>
-                            <a href="#confirm" role="button" data-target="modal-example" onClick="toggleModal(event)">
-                                Confirm
-                            </a>
-                        </footer>
-                    </article>
-                </dialog>
-            </main>
 
-            <!-- Button to trigger the modal -->
-            <button class="contrast" data-target="modal-example" onClick="toggleModal(event)">
-                Launch demo modal
-            </button>
-            </section>
+<article>
+
+    <body>
+        <header class="App-header">
+            <nav>
+                <ul>
+                    <li><strong>A Landing Page.</strong></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="App">
+            <main>
+                <div class="grid">
+                    <div>
+                        <p>Hello!</p>
+                        <p>
+                        Cras sit amet maximus risus.
+                        Pellentesque sodales odio sit amet augue finibus pellentesque.
+                        Nullam finibus risus non semper euismod.
+                        </p>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', filename='undraw_fishing_hoxa.svg') }}" class="App-logo"
+                            alt="Yet another image." />
+                    </div>
+
+                </div>
+            </main>
         </div>
+    </body>
+</article>
+
 {% endblock %}

@@ -19,7 +19,7 @@ conn = pymysql.connect(
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("index.html", title="Welcome Home")
+    return render_template("index.html", title="Welcome to BrandName")
 
 # create new user
 @app.route("/create_user", methods=["GET", "POST"])
@@ -36,11 +36,6 @@ def create_user():
 @app.route("/sign_in")
 def sign_in():
     return render_template("sign_in.html", title="Sign In")
-
-#landing
-@app.route("/landing")
-def landing():
-    return render_template("landing.html", title="Landing")
 
 @app.route("/manage_users", methods=["GET", "POST"])
 def manage_users():
@@ -112,3 +107,7 @@ def insert_user(name,email,password):
 # def data():
 #     details = select_users()
 #     return render_template("data.html", title="View Data", users = details)
+
+# @app.route("/landing")
+# def landing():
+#     return render_template("landing.html", title="Landing")
