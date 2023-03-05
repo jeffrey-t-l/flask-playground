@@ -26,7 +26,7 @@ def home():
 def create_user():
     if request.method == "POST":
         try:
-            insert_user(request.form["username"], request.form["email"], request.form["password"])
+            insert_user(request.form["username"], request.form["email"], request.form["pw"])
             print("SUCCESS")
         except:
             print("ERROR")
@@ -43,7 +43,12 @@ def manage_users():
     # print(request.form.items)
     if request.method == "POST":
         print("manage_users_POST: " + str(request.form.items))
-        return render_template("manage_user.html", title="Manage User", username=request.form["username"], email=request.form["email"], pw=request.form["pw"])
+        return render_template("manage_user.html",
+                               title="Manage User",
+                               username=request.form["username"],
+                               email=request.form["email"],
+                               pw=request.form["pw"]
+                               )
     elif request.method == "GET":
         print("GET: " + str(request.form.items))
     return render_template("manage_users.html", title="Manage Users", users=details)
@@ -51,7 +56,7 @@ def manage_users():
 @app.route("/manage_user", methods=["GET", "POST"])
 def manage_user():
     if request.method == "POST":
-        # insert_user(request.form["username"], request.form["email"], request.form["password"])
+        # insert_user(request.form["username"], request.form["email"], request.form["pw"])
         # print("SUCCESS AT MANAGER_USER()")
         print("manage_user_POST: " + str(request.form.items))
     elif request.method == "GET":
@@ -71,9 +76,9 @@ def select_users():
     return details
 
 # insert new user into mysql
-def insert_user(name,email,password):
+def insert_user(name,email,pw):
     cur=conn.cursor()
-    cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,password))
+    cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,pw))
     conn.commit()
 
 
@@ -85,7 +90,7 @@ def insert_user(name,email,password):
 # def create_account():
 #     if request.method == "POST":
 #         try:
-#             insert_user(request.form["username"], request.form["email"], request.form["password"])
+#             insert_user(request.form["username"], request.form["email"], request.form["pw"])
 #             print("SUCCESS")
 #         except:
 #             print("ERROR")
@@ -96,7 +101,7 @@ def insert_user(name,email,password):
 # def edit_account():
 #     if request.method == "POST":
 #         try:
-#             insert_user(request.form["username"], request.form["email"], request.form["password"])
+#             insert_user(request.form["username"], request.form["email"], request.form["pw"])
 #             print("SUCCESS")
 #         except:
 #             print("ERROR")
