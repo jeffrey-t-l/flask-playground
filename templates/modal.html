@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pico.min.css') }}">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+
+            <ul>
+                <li><a href="/" class="secondary"><strong>BrandName</strong></a></li>
+            </ul>
+            <ul>
+                {% block head %}{% endblock %}
+                <!-- <li><a href="/manage_users" role="button">Manage Users</a></li>-->
+                <li><a href="/sign_in" role="button" class="primary">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <body>
+
+        <!-- Button to trigger the modal -->
+        <button class="contrast" data-target="modal-example" onClick="toggleModal(event)">
+            Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <dialog id="modal-example">
+            <article>
+                <a href="#close" aria-label="Close" class="close" data-target="modal-example"
+                    onClick="toggleModal(event)">
+                </a>
+                <h3>Confirm your action!</h3>
+                <p>
+                    Cras sit amet maximus risus.
+                    Pellentesque sodales odio sit amet augue finibus pellentesque.
+                    Nullam finibus risus non semper euismod.
+                </p>
+                <footer>
+                    <a href="#cancel" role="button" class="secondary" data-target="modal-example"
+                        onClick="toggleModal(event)">
+                        Cancel
+                    </a>
+                    <a href="#confirm" role="button" data-target="modal-example" onClick="toggleModal(event)">
+                        Confirm
+                    </a>
+                </footer>
+            </article>
+        </dialog>
+        <!-- <script src="../static/js/modal.js"></script> -->
+        <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+    </body>
+
+</html>

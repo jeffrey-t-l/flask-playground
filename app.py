@@ -25,17 +25,34 @@ def home():
 @app.route("/create_user", methods=["GET", "POST"])
 def create_user():
     if request.method == "POST":
-        try:
-            insert_user(request.form["username"], request.form["email"], request.form["pw"])
-            print("SUCCESS")
-        except:
-            print("ERROR")
+        user_exists = False
+        username = request.form["username"]
+        results = select_user(username)
+
+        for result in results:
+            if result[0] == username:
+                user_exists = True
+            else:
+                user_exists = True
+                print("no match in db")
+        if user_exists == False:
+            try:
+                insert_user(request.form["username"], request.form["email"], request.form["pw"])
+                print("SUCCESS")
+            except:
+                print("ERROR on INSERT")
+        elif user_exists == True:
+            print("User already exists")
     return render_template("create_user.html", title="Create User")
 
 #Sign In
 @app.route("/sign_in")
 def sign_in():
     return render_template("sign_in.html", title="Sign In")
+
+@app.route("/modal")
+def modal():
+    return render_template("modal.html", title="Modal Test")
 
 @app.route("/manage_users", methods=["GET", "POST"])
 def manage_users():
@@ -84,6 +101,12 @@ def insert_user(name,email,pw):
     cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,pw))
     conn.commit()
 
+# get a user from mysql
+def select_user(username):
+    cur=conn.cursor()
+    cur.execute("SELECT * FROM user WHERE username=%s", username)
+    details = cur.fetchall()
+    return details
 
 
 
