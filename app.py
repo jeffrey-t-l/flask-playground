@@ -6,14 +6,16 @@ import pymysql
 app = Flask(__name__)
 
 # create connection to mysql
-load_dotenv()
-conn = pymysql.connect(
-    host="database-2.ceckcclbqkdy.us-east-1.rds.amazonaws.com",
-    port=3306,
-    user=os.getenv("db_user"),
-    password=os.getenv("db_pw"),
-    db='database_2'
-)
+# load_dotenv()
+def mysql_conn():
+    conn = pymysql.connect(
+        host="database-2.ceckcclbqkdy.us-east-1.rds.amazonaws.com",
+        port=3306,
+        user=os.getenv("db_user"),
+        password=os.getenv("db_pw"),
+        db='database_2'
+    )
+    return conn
 
 # HOME
 @app.route("/")
@@ -29,12 +31,14 @@ def create_user():
         username = request.form["username"]
         results = select_user(username)
 
+        # check if user exists already
         for result in results:
             if result[0] == username:
                 user_exists = True
             else:
                 user_exists = True
                 print("no match in db")
+        # if user does not exist, create it
         if user_exists == False:
             try:
                 insert_user(request.form["username"], request.form["email"], request.form["pw"])
@@ -90,6 +94,7 @@ def user_settings():
 
 # get all users from mysql
 def select_users():
+    conn = mysql_conn()
     cur=conn.cursor()
     cur.execute("SELECT username,email,password,create_time FROM user")
     details = cur.fetchall()
@@ -97,12 +102,14 @@ def select_users():
 
 # insert new user into mysql
 def insert_user(name,email,pw):
+    conn = mysql_conn()
     cur=conn.cursor()
     cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,pw))
     conn.commit()
 
 # get a user from mysql
 def select_user(username):
+    conn = mysql_conn()
     cur=conn.cursor()
     cur.execute("SELECT * FROM user WHERE username=%s", username)
     details = cur.fetchall()
@@ -142,3 +149,8 @@ def select_user(username):
 # @app.route("/landing")
 # def landing():
 #     return render_template("landing.html", title="Landing")
+
+if __name__ == "__main__":
+    app.run()
+    load_dotenv()
+    mysql_conn()
