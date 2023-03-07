@@ -2,6 +2,26 @@
 {% block form %}
 <article>
 
+
+
+
+
+
+
+
+<!--
+
+this page needs to be rewritten to pull from new object
+
+probably makes sense to delete duplicate db entries because they will be a pain to deal with
+
+
+
+-->
+
+
+
+
   <body>
     <header class="App-header">
       <nav>
@@ -14,7 +34,7 @@
       User created on {{ created_date }}
     </section>
     <section>
-      <form method="post" id="manageuser">
+      <form method="POST" id="manageuser">
         <div>
           <label for="username">
             Username
@@ -30,10 +50,11 @@
             <input type="password" id="pw" name="pw" value="{{ pw }}">
           </label>
         </div>
-        <section>
           <button type="submit">Save</button>
-        </section>
       </form>
+      <!-- <form method="post" id="deleteuser">
+          <button type="submit" class="contrast outline" role="button">Delete User Account</button>
+      </form> -->
     </section>
   </body>
 </article>
