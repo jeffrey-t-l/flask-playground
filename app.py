@@ -61,11 +61,22 @@ def manage_users():
 def manage_user():
     if request.method == "POST":
         print("manage_user() :_: POST")
-        #TODO : UPDATE user
-        # insert_user(request.form["username"], request.form["email"], request.form["pw"])
-        # print("SUCCESS AT MANAGER_USER()")
+
+        action = request.form["action"]
         username = request.args.get('username', default = None, type = str)
-        details = select_user(username)
+
+        if action == "DeleteUser":
+            print("ACTION DELETE USER")
+            #TODO code for deleting user from table
+            #ask for confirmation before committing
+            #try to delete user
+            #except the error
+        if action == "ManagerUser":
+            print("ACTION MANAGE USER")
+            #TODO : UPDATE user
+            # insert_user(request.form["username"], request.form["email"], request.form["pw"])
+            # print("SUCCESS AT MANAGER_USER()")
+            details = select_user(username)
 
     # called if coming from manage_users page
     if request.method == "GET":
@@ -87,20 +98,20 @@ def manage_user():
 # AWS DATABASE FUNCTIONS
 # get all users from mysql
 def select_users():
-    conn = mysql_conn()
+    conn=mysql_conn()
     cur=conn.cursor()
     cur.execute("SELECT username,email,password,create_time FROM user")
     details = cur.fetchall()
     return details
 # insert new user into mysql
 def insert_user(name,email,pw):
-    conn = mysql_conn()
+    conn=mysql_conn()
     cur=conn.cursor()
     cur.execute("INSERT INTO user (username,email,password) VALUES (%s,%s,%s)", (name,email,pw))
     conn.commit()
 # get a user from mysql
 def select_user(username):
-    conn = mysql_conn()
+    conn=mysql_conn()
     cur=conn.cursor()
     cur.execute("SELECT * FROM user WHERE username=%s", username)
     details = cur.fetchall()
