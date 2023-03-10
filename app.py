@@ -59,11 +59,14 @@ def manage_users():
 
 @app.route("/manage_user", methods=["GET", "POST"])
 def manage_user():
+    print("Got to manage_user, method is: ", str(request.method))
     if request.method == "POST":
         print("manage_user() :_: POST")
 
         action = request.form["action"]
+        print(str(action))
         username = request.args.get('username', default = None, type = str)
+        print(str(username))
 
         if action == "DeleteUser":
             print("ACTION DELETE USER")
@@ -77,9 +80,14 @@ def manage_user():
             # insert_user(request.form["username"], request.form["email"], request.form["pw"])
             # print("SUCCESS AT MANAGER_USER()")
             details = select_user(username)
+        return render_template("manage_user.html",
+                               title="Manage User",
+                               username=username)
+                #TODO return the rest of the fields, either call get_user or pull from previous function
 
     # called if coming from manage_users page
-    if request.method == "GET":
+    elif request.method == "GET":
+        print("Got to if req==get")
         username = request.args.get('username', default = None, type = str)
         details = select_user(username)
         email = details[0][1]
@@ -91,7 +99,8 @@ def manage_user():
                                email=email,
                                pw=pw,
                                created_time=created_time)
-    return render_template("manage_user.html", title="Manage User")
+    else:
+        return render_template("manage_user.html", title="Manage User")
 
 
 

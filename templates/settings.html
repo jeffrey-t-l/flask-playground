@@ -26,8 +26,8 @@
 
         <header>
             <hgroup>
-              <h1>Class-less example</h1>
-              <h2>Just a pure semantic HTML markup, without <code>.classes</code></h2>
+              <h1>User Settings</h1>
+              <h2>Change the theme, reset your password</h2>
             </hgroup>
             <nav>
               <ul>
@@ -41,7 +41,7 @@
                     </ul>
                   </details>
                 </li>
-                <li>
+                <!-- <li>
                   <details role="list">
                     <summary aria-haspopup="listbox">Examples</summary>
                     <ul role="listbox">
@@ -57,18 +57,41 @@
                   </details>
                 </li>
               </ul>
-            </nav>
+            </nav> -->
           </header>
         <section>
-            <details role="list">
-                <summary aria-haspopup="listbox" role="button">Theme</summary>
-                <ul role="listbox">
-                  <li><a href="#" data-theme-switcher="auto">Auto</a></li>
-                  <li><a href="#" data-theme-switcher="light">Light</a></li>
-                  <li><a href="#" data-theme-switcher="dark">Dark</a></li>
-                </ul>
-              </details>
+          <div>
+            <hgroup>
+              <h1>Reset your password</h1>
+              <h2>Reset your password</h2>
+            </hgroup>
+          </div>
+          <form method="POST" id="resetpassword">
+            <input type="text" name="action" value="ResetPassword" hidden>
+            <div>
+              <label for="pw1">
+                Password:
+                <input type="password" id="pw1" name="pw1">
+              </label>
+              <label for="pw2">
+                Re-enter Password:
+                <input type="password" id="pw2" name="pw2">
+              </label>
+            </div>
+            <button type="submit" class="contrast outline" role="button">Change Password</button>
+          </form>
         </section>
+        <!-- moving this to the manage_user page
+        <section>
+          <hgroup>
+            <h1>Welcome to the danger zone</h1>
+            <h2>Be careful what you do here</h2>
+          </hgroup>
+          <form method="POST" id="deleteuser">
+            <input type="text" id="action" name="action" value="DeleteUser" hidden>
+            <button type="submit" class="contrast outline" role="button">Delete User Account</button>
+          </form>
+        </section> -->
     </body>
 </article>
 

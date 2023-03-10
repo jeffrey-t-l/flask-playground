@@ -9,7 +9,7 @@
 
 
 
-<!--
+  <!--
 
 this page needs to be rewritten to pull from new object
 
@@ -24,6 +24,7 @@ probably makes sense to delete duplicate db entries because they will be a pain 
 
   <body>
     <header class="App-header">
+      <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
       <nav>
         <ul>
           <li><strong>Manage User Details</strong></li>
@@ -31,7 +32,7 @@ probably makes sense to delete duplicate db entries because they will be a pain 
       </nav>
     </header>
     <section>
-      User created on {{ created_date }}
+      User created on {{ created_time }}
     </section>
     <section>
       <form method="POST" id="manageuser">
@@ -51,13 +52,39 @@ probably makes sense to delete duplicate db entries because they will be a pain 
             <input type="password" id="pw" name="pw" value="{{ pw }}">
           </label>
         </div>
-          <button type="submit">Save</button>
+        <button type="submit">Save</button>
       </form>
-      <form method="POST" id="deleteuser">
-          <input type="text" id="action" name="action" value="DeleteUser" hidden>
-          <button type="submit" class="contrast outline" role="button">Delete User Account</button>
-      </form>
+      <button type="submit" class="contrast outline" role="button" class="contrast" data-target="modal-delete-user"
+        onClick="toggleModal(event)">Delete User Account</button>
     </section>
+
+
+    <!-- Modal -->
+    <dialog id="modal-delete-user">
+      <article>
+        <a href="#close" aria-label="Close" class="close" data-target="modal-delete-user" onClick="toggleModal(event)">
+        </a>
+        <h3>Please Confirm!</h3>
+        <p>
+          You are about to submit a request to delete this user from the database. This is not reversible.
+        </p>
+        <footer>
+          <div>
+            <a href="#cancel" role="button" class="secondary" data-target="modal-delete-user"
+              onClick="toggleModal(event)">
+              Cancel
+            </a>
+            <form method="POST" id="deleteuser">
+              <a href="#confirm" role="button" data-target="modal-delete-user" onClick="toggleModal(event)">
+                Confirm
+              </a>
+              <input type="text" id="action" name="action" value="DeleteUser" hidden>
+            </form>
+          </div>
+        </footer>
+      </article>
+    </dialog>
+
   </body>
 </article>
 
