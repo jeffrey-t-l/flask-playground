@@ -80,11 +80,11 @@ def manage_user():
             #TODO : UPDATE user
             # insert_user(request.form["username"], request.form["email"], request.form["pw"])
             # print("SUCCESS AT MANAGER_USER()")
-        #     details = select_user(username)
-        return render_template("manage_user.html",
+            # details = select_user(username)
+            return render_template("manage_user.html",
                                title="Manage User",
                                username=username)
-                #TODO return the rest of the fields, either call get_user or pull from previous function
+            #TODO return the rest of the fields, either call get_user or pull from previous function
 
     # called if coming from manage_users page
     elif request.method == "GET":

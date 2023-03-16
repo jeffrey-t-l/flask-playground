@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<ul>
+  <li><a href="/manage_users" role="button" class="primary">Manage Users</a></li>
+  <li><a href="/" role="button" class="secondary">Sign Out</a></li>
+</ul>
+{% endblock %}
 {% block form %}
 <article>
 
@@ -48,8 +55,8 @@ probably makes sense to delete duplicate db entries because they will be a pain 
         </div>
         <button type="submit">Save</button>
       </form>
-      </section>
-      <section>
+    </section>
+    <section>
       <button type="submit" class="contrast outline" role="button" class="contrast" data-target="modal-delete-user"
         onClick="toggleModal(event)">Delete User Account</button>
     </section>
@@ -66,17 +73,17 @@ probably makes sense to delete duplicate db entries because they will be a pain 
         </p>
         <footer>
           <div>
-            <a href="#cancel" role="button" class="secondary" data-target="modal-delete-user"
-              onClick="toggleModal(event)">
-              Cancel
-            </a>
-              <!-- <a href="#confirm" role="button" data-target="modal-delete-user" onClick="toggleModal(event)">
-                Confirm
-              </a> -->
-              <form method="POST" id="confirmdelete">
-                <button type="submit" action="confirmdelete" data-target="modal-delete-user" onClick="submitModal(event)">Do It!</button>
-                <!-- <script src="{{ url_for('static', filename='js/modal.js') }}"></script> -->
-                <input type="text" id="DeleteUser" name="action" value="DeleteUser" hidden>
+            <form method="GET" id="canceldelete">
+              <!-- <a href="#cancel" role="button" class="secondary" data-target="modal-delete-user" onClick="toggleModal(event)">Cancel</a> -->
+              <!-- <a href="#confirm" role="button" data-target="modal-delete-user" onClick="toggleModal(event)">Confirm</a> -->
+              <button href="#cancel" data-target="modal-delete-user" onClick="toggleModal(event)" class="secondary">Cancel</button>
+            </form>
+          </div>
+          <div>
+            <form method="POST" id="confirmdelete">
+              <button type="submit" action="confirmdelete" data-target="modal-delete-user"
+                onClick="submitModal(event)">Do It!</button>
+              <input type="text" id="DeleteUser" name="action" value="DeleteUser" hidden>
             </form>
           </div>
         </footer>
