@@ -74,12 +74,13 @@ def manage_user():
             #ask for confirmation before committing
             #try to delete user
             #except the error
-        if action == "ManagerUser":
+            return redirect(url_for("manage_users"), 302)
+        elif action == "ManagerUser":
             print("ACTION MANAGE USER")
             #TODO : UPDATE user
             # insert_user(request.form["username"], request.form["email"], request.form["pw"])
             # print("SUCCESS AT MANAGER_USER()")
-            details = select_user(username)
+        #     details = select_user(username)
         return render_template("manage_user.html",
                                title="Manage User",
                                username=username)
@@ -93,8 +94,9 @@ def manage_user():
         email = details[0][1]
         pw = details[0][2]
         created_time = details[0][3]
+        title = "User: " + email
         return render_template("manage_user.html",
-                               title=email,
+                               title=title,
                                username=username,
                                email=email,
                                pw=pw,

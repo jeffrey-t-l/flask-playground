@@ -3,12 +3,6 @@
 <article>
 
 
-
-
-
-
-
-
   <!--
 
 this page needs to be rewritten to pull from new object
@@ -54,6 +48,8 @@ probably makes sense to delete duplicate db entries because they will be a pain 
         </div>
         <button type="submit">Save</button>
       </form>
+      </section>
+      <section>
       <button type="submit" class="contrast outline" role="button" class="contrast" data-target="modal-delete-user"
         onClick="toggleModal(event)">Delete User Account</button>
     </section>
@@ -74,11 +70,13 @@ probably makes sense to delete duplicate db entries because they will be a pain 
               onClick="toggleModal(event)">
               Cancel
             </a>
-            <form method="POST" id="deleteuser">
-              <a href="#confirm" role="button" data-target="modal-delete-user" onClick="toggleModal(event)">
+              <!-- <a href="#confirm" role="button" data-target="modal-delete-user" onClick="toggleModal(event)">
                 Confirm
-              </a>
-              <input type="text" id="action" name="action" value="DeleteUser" hidden>
+              </a> -->
+              <form method="POST" id="confirmdelete">
+                <button type="submit" action="confirmdelete" data-target="modal-delete-user" onClick="submitModal(event)">Do It!</button>
+                <!-- <script src="{{ url_for('static', filename='js/modal.js') }}"></script> -->
+                <input type="text" id="DeleteUser" name="action" value="DeleteUser" hidden>
             </form>
           </div>
         </footer>

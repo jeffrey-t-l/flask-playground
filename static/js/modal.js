@@ -93,3 +93,9 @@ const getScrollbarWidth = () => {
 const isScrollbarVisible = () => {
   return document.body.scrollHeight > screen.height;
 }
+
+// //i dont know what im doing here
+function submitModal() {
+document.getElementById("DeleteUser").submitModal();
+  return "success"
+}
